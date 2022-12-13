@@ -1,4 +1,13 @@
+require("dotenv").config();
 require("@nomicfoundation/hardhat-toolbox");
+require('hardhat-deploy');
+require('./tasks');
+
+const { TESTNET_DEPLOYER_PRIVATE_KEY } = process.env;
+
+const accounts = [
+  TESTNET_DEPLOYER_PRIVATE_KEY,
+]
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
@@ -91,7 +100,7 @@ module.exports = {
       accounts,
     },
     'fantom-testnet': {
-      url: `https://rpc.testnet.fantom.network/`,
+      url: `https://rpc.ankr.com/fantom_testnet/`,
       chainId: 4002,
       accounts,
     }

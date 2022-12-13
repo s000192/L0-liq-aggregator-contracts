@@ -11,24 +11,18 @@ import "./interfaces/IStargateRouter.sol";
 contract LiquidityAggregator is NonblockingLzApp, ILiquidityAggregator {
     // TODO: Hardcoded for now. Make this generic for different kinds of tokens
     IERC20 public immutable TOKEN;
-    IPermit2 public immutable PERMIT2;
     IStargateRouter public immutable STARGATE_ROUTER;
-    uint public immutable SRC_POOL_ID;
-    uint public immutable DST_POOL_ID;
+    // Permit2 is deployed at the same address on all chains
+    address public constant PERMIT2_ADDRESS = 0x000000000022D473030F116dDEE9F6B43aC78BA3;
+    uint public constant POOL_ID = 1;
 
     constructor(
         address _lzEndpoint,
         IERC20 _token,
-        IPermit2 _permit2,
-        IStargateRouter _stargateRouter,
-        uint _srcPoolId,
-        uint _dstPoolId
+        IStargateRouter _stargateRouter
     ) NonblockingLzApp(_lzEndpoint) {
         TOKEN = _token;
-        PERMIT2 = _permit2;
         STARGATE_ROUTER = _stargateRouter;
-        SRC_POOL_ID = _srcPoolId;
-        DST_POOL_ID = _dstPoolId;
     }
 
     function aggregate(
@@ -42,13 +36,15 @@ contract LiquidityAggregator is NonblockingLzApp, ILiquidityAggregator {
         // check if the array length of all parameters are the same
         require(length == _amounts.length && length == _permitNonces.length && length == _deadlines.length && length == signatures.length, "Length mismatch");
 
+        // TODO: need a better way to divide msg.value
+        uint valueToBeSent = msg.value / length;
         // loop through destination chains
         for (uint i = 0; i < length; ) {
             // encode the payload with above params
             bytes memory payload = abi.encode(Payload(_amounts[i], _permitNonces[i], _deadlines[i], signatures[i]));
 
             // send payload to destination chain
-            _lzSend(_dstChainIds[i], payload, payable(msg.sender), address(0x0), bytes(""), msg.value);
+            _lzSend(_dstChainIds[i], payload, payable(msg.sender), address(0x0), bytes(""), valueToBeSent);
 
             unchecked {
                 ++i;
@@ -73,7 +69,7 @@ contract LiquidityAggregator is NonblockingLzApp, ILiquidityAggregator {
             }
 
             // TODO: Improve readability
-            PERMIT2.permitTransferFrom(IPermit2.PermitTransferFrom(IPermit2.TokenPermissions(TOKEN, payload.amount), payload.permitNonce, payload.deadline), IPermit2.SignatureTransferDetails(address(STARGATE_ROUTER), payload.amount), _owner, payload.signature);
+            IPermit2(PERMIT2_ADDRESS).permitTransferFrom(IPermit2.PermitTransferFrom(IPermit2.TokenPermissions(TOKEN, payload.amount), payload.permitNonce, payload.deadline), IPermit2.SignatureTransferDetails(address(STARGATE_ROUTER), payload.amount), _owner, payload.signature);
 
             // call stargate swap
             _executeStargateSwap(_srcChainId, _srcAddress, payload.amount, _owner);
@@ -88,8 +84,8 @@ contract LiquidityAggregator is NonblockingLzApp, ILiquidityAggregator {
     ) private {
         STARGATE_ROUTER.swap{value: msg.value}( // TODO: check if we need msg.value
             _srcChainId,
-            SRC_POOL_ID,
-            DST_POOL_ID,
+            POOL_ID,
+            POOL_ID,
             payable(_owner),
             _amount,
             _amount, // TODO: Setting min amount the same as amonut.  Should include a min amount in message.

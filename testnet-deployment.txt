@@ -1,0 +1,47 @@
+Goerli:
+deploying "LiquidityAggregator" (tx: 0x18fee7764cd664d5f1ca6e2bc53c0ba1a3db2b9e85833ea4edbe4ed3dec4e765)...: deployed at 0x086369271a33dB0758d95A5F261CAdA4b7c1E384 with 2261123 gas
+
+Mumbai
+deploying "LiquidityAggregator" (tx: 0x3e1004b37031cd9c49280ae18995da7e8ca040d9f3c60f801f8daf516493bcd4)...: deployed at 0x0740A0D901f8252E7Ad84Be66faC3Fa19Ef120b4 with 2261123 gas
+
+Fuji:
+deploying "LiquidityAggregator" (tx: 0x2855e25365a89e599a7606173db79138d280eea8d9f82d15fb8c60f7359f6204)...: deployed at 0x036141Beac53A83B0A5Bc11eA8d7E81d5c48bCe7 with 2261123 gas
+
+Fantom-testnet:
+deploying "LiquidityAggregator" (tx: 0x106234c567fc427e6a3b5068937ab86a3f8c602d3c6b865cf89acf0d7eb7c264)...: deployed at 0x036141Beac53A83B0A5Bc11eA8d7E81d5c48bCe7 with 2261123 gas\
+
+✅ [goerli] setTrustedRemote(10109, 0x0740a0d901f8252e7ad84be66fac3fa19ef120b4086369271a33db0758d95a5f261cada4b7c1e384)
+ tx: 0xc66cd805ec1af725b6ed44475e48e42d980e1e2a226d36d136f246382b68254a
+
+✅ [goerli] setTrustedRemote(10106, 0x036141beac53a83b0a5bc11ea8d7e81d5c48bce7086369271a33db0758d95a5f261cada4b7c1e384)
+ tx: 0xb8b422015c4843b65b76093623b9ad540d044a1efe836d66706bac4c504f9c09
+
+✅ [goerli] setTrustedRemote(10112, 0x036141beac53a83b0a5bc11ea8d7e81d5c48bce7086369271a33db0758d95a5f261cada4b7c1e384)
+ tx: 0x021380469d633f8baa043ed7b0b3d4c39e3c6898bad2c6a8825ad59c03665c30
+
+
+✅ [mumbai] setTrustedRemote(10106, 0x036141beac53a83b0a5bc11ea8d7e81d5c48bce70740a0d901f8252e7ad84be66fac3fa19ef120b4)
+ tx: 0xdb68b083f48cb22e8e3cefb847bb0b6b51839cf4aea43f20cb23cb90a18b36a4
+
+✅ [mumbai] setTrustedRemote(10112, 0x036141beac53a83b0a5bc11ea8d7e81d5c48bce70740a0d901f8252e7ad84be66fac3fa19ef120b4)
+ tx: 0x1234cf495d6f71ed3d46d65b3f7d90a7dcdbaff299d59485c65da5af5b1a699e
+
+
+✅ [fuji] setTrustedRemote(10121, 0x086369271a33db0758d95a5f261cada4b7c1e384036141beac53a83b0a5bc11ea8d7e81d5c48bce7)
+ tx: 0xfb3cce11f353c9e8c4a60f29407cb026f174182eb91dea33b0e0f06a6d90a0bf
+
+✅ [fuji] setTrustedRemote(10109, 0x0740a0d901f8252e7ad84be66fac3fa19ef120b4036141beac53a83b0a5bc11ea8d7e81d5c48bce7)
+ tx: 0xe4873e2c7d452986e39fceb200a79de9e553ef784ded7bf525312b0857ffefba
+
+✅ [fuji] setTrustedRemote(10112, 0x036141beac53a83b0a5bc11ea8d7e81d5c48bce7036141beac53a83b0a5bc11ea8d7e81d5c48bce7)
+ tx: 0xe78a2d430b636a7aea128a2484095dbde9f3808f3f5c08f210154c368b1b3dbe
+
+
+✅ [fantom-testnet] setTrustedRemote(10121, 0x086369271a33db0758d95a5f261cada4b7c1e384036141beac53a83b0a5bc11ea8d7e81d5c48bce7)
+ tx: 0x5082bb8910280ef7c3904ebb7e0d57d71bc44295cd6bc6d7929c99329fcdccfd
+
+✅ [fantom-testnet] setTrustedRemote(10109, 0x0740a0d901f8252e7ad84be66fac3fa19ef120b4036141beac53a83b0a5bc11ea8d7e81d5c48bce7)
+ tx: 0xd1af80a488837cc574f6d62ba63425edaea69b583e7fd05a2a6589ed2c3c9d25
+
+✅ [fantom-testnet] setTrustedRemote(10106, 0x036141beac53a83b0a5bc11ea8d7e81d5c48bce7036141beac53a83b0a5bc11ea8d7e81d5c48bce7)
+ tx: 0xdab47d5fe6dbd6336422a2793e3963ad12fdd906b6156079bff5f1ca49f9036d
