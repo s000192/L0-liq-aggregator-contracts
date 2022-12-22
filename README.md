@@ -2,7 +2,22 @@
 
 This project demonstrates a cross-chain token aggregator.
 
-# LiquidityAggregator.sol
+## Problem
+1. Fragmented liquidity - ERC20 tokens (e.g. USDC, USDT, WETH) scattered across multiple chains
+
+2. Multiple transactions need to be sent to bridge tokens if you need liquidity on 1 chain -> poor UX
+
+## Scenario
+<p align="center">
+  <img width='800' src="./diagram/scenario.png">
+</p>
+
+## Architecture
+<p align="center">
+  <img width='800' src="./diagram/architecture.png">
+</p>
+
+## LiquidityAggregator.sol
 
 1. Deploy LiquidityAggregator:
 
