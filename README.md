@@ -9,7 +9,7 @@ This project demonstrates a cross-chain token aggregator.
 
 ## Scenario
 <p align="center">
-  <img width='800' src="./diagram/scenario.png">
+  <img width='500' src="./diagram/scenario.png">
 </p>
 
 ## Architecture
